@@ -1,9 +1,12 @@
 /********** Template CSS **********/
 :root {
-    --primary: #D81324;
-    --secondary: #0B2154;
+    --primary: #c3283b;
+    --secondary: #5c5e64;
     --light: #F2F2F2;
     --dark: #111111;
+}
+strong {
+    color: #c3283b !important;
 }
 
 .fw-medium {
