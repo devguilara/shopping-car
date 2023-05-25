@@ -74,7 +74,9 @@ strong {
     font-weight: normal;
     border-radius: 2px;
 }
-
+.logo{
+   height:100px !important;
+}
 
 /*** Navbar ***/
 .navbar .dropdown-toggle::after {
