@@ -8,7 +8,9 @@
 strong {
     color: #c3283b !important;
 }
-
+p {
+    font-size: 18px !important;
+}
 .fw-medium {
     font-weight: 600 !important;
 }
@@ -398,5 +400,8 @@ strong {
         width: 100%;
         height: auto;
         object-fit: cover;
+    }
+    p {
+        font-size: 14px !important;
     }
 }
