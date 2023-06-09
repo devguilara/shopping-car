@@ -1,545 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <style>
+      .cookieConsentContainer {
+        z-index: 999;
+        width: 100%;
+        min-height: 20px;
+        box-sizing: border-box;
+        padding: 30px 30px 30px 30px;
+        background: #232323;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0px;
+        display: none
+      }
 
-<head>
-    <style>.cookieConsentContainer{z-index:999;width:100%;min-height:20px;box-sizing:border-box;padding:30px 30px 30px 30px;background:#232323;overflow:hidden;position:fixed;bottom:0px ;display:none}.cookieConsentContainer .cookieTitle a{font-family:OpenSans,arial,sans-serif;color:#fff;font-size:22px;line-height:20px;display:block}.cookieConsentContainer .cookieDesc p{margin:0;padding:0;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:13px;line-height:20px;display:block;margin-top:10px}.cookieConsentContainer .cookieDesc a{font-family:OpenSans,arial,sans-serif;color:#fff;text-decoration:underline}.cookieConsentContainer .cookieButton a{display:inline-block;font-family:OpenSans,arial,sans-serif;color:#fff !important;font-size:14px;font-weight:700;margin-top:14px;background:#000;box-sizing:border-box;padding:15px 24px;text-align:center;transition:background .3s}.cookieConsentContainer .cookieButton a:hover{cursor:pointer;background:#a83a47}@media (max-width:980px){.cookieConsentContainer{bottom:0!important;left:0!important;width:100%!important}}</style>
+      .cookieConsentContainer .cookieTitle a {
+        font-family: OpenSans, arial, sans-serif;
+        color: #fff;
+        font-size: 22px;
+        line-height: 20px;
+        display: block
+      }
 
+      .cookieConsentContainer .cookieDesc p {
+        margin: 0;
+        padding: 0;
+        font-family: OpenSans, arial, sans-serif;
+        color: #fff;
+        font-size: 13px;
+        line-height: 20px;
+        display: block;
+        margin-top: 10px
+      }
+
+      .cookieConsentContainer .cookieDesc a {
+        font-family: OpenSans, arial, sans-serif;
+        color: #fff;
+        text-decoration: underline
+      }
+
+      .cookieConsentContainer .cookieButton a {
+        display: inline-block;
+        font-family: OpenSans, arial, sans-serif;
+        color: #fff !important;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 14px;
+        background: #000;
+        box-sizing: border-box;
+        padding: 15px 24px;
+        text-align: center;
+        transition: background .3s
+      }
+
+      .cookieConsentContainer .cookieButton a:hover {
+        cursor: pointer;
+        background: #a83a47
+      }
+
+      @media (max-width:980px) {
+        .cookieConsentContainer {
+          bottom: 0 !important;
+          left: 0 !important;
+          width: 100% !important
+        }
+      }
+    </style>
     <meta charset="utf-8">
     <title>Shopping Car - Centro Automotivo</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet"> 
-
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
+  </head>
+  <body>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
     <!-- Spinner End -->
-
-
     <!-- Topbar Start
-    <div class="container-fluid bg-light p-0">
-        <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small> Rua Visconde do Rio Branco, 108 - Jaú/SP</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center py-3">
-                    <small class="far fa-clock text-primary me-2"></small>
-                    <small>Segunda - Sexta : 09.00 AM - 09.00 PM</small>
-                </div>
-            </div>
-            <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>(014) 3601-3960</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container-fluid bg-light p-0"><div class="row gx-0 d-none d-lg-flex"><div class="col-lg-7 px-5 text-start"><div class="h-100 d-inline-flex align-items-center py-3 me-4"><small class="fa fa-map-marker-alt text-primary me-2"></small><small> Rua Visconde do Rio Branco, 108 - Jaú/SP</small></div><div class="h-100 d-inline-flex align-items-center py-3"><small class="far fa-clock text-primary me-2"></small><small>Segunda - Sexta : 09.00 AM - 09.00 PM</small></div></div><div class="col-lg-5 px-5 text-end"><div class="h-100 d-inline-flex align-items-center py-3 me-4"><small class="fa fa-phone-alt text-primary me-2"></small><small>(014) 3601-3960</small></div><div class="h-100 d-inline-flex align-items-center"><a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a><a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a><a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a><a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a></div></div></div></div>
      Topbar End -->
-
-
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-red navbar-light shadow sticky-top p-0" style="background-color: white;">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img  src="img/logo.png" class="img-fluid logo" alt="" srcset="">
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                <a href="#sobre" class="nav-item nav-link">Sobre</a>
-                <a href="#servicos" class="nav-item nav-link">Serviços</a>
-         
-                
-            </div>
-            <a href="#contato" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Contato<i class="fa fa-arrow-right ms-3"></i></a>
+      <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <img src="img/logo.png" class="img-fluid logo" alt="" srcset="">
+      </a>
+      <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="index.html" class="nav-item nav-link active">Inicio</a>
+          <a href="#sobre" class="nav-item nav-link">Sobre</a>
+          <a href="#servicos" class="nav-item nav-link">Serviços</a>
         </div>
+        <a href="#contato" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Contato <i class="fa fa-arrow-right ms-3"></i>
+        </a>
+      </div>
     </nav>
     <!-- Navbar End -->
-
-
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="img/carrosel-estoque-jau.png" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center justify-content-lg-start">
-                                <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">//Estoque -  Loja Jaú //</h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">PREÇO BAIXO, CREDIBILIDADE E QUALIDADE</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Entre em Contato<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+      <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="w-100" src="img/carrosel-estoque-jau.png" alt="Image">
+            <div class="carousel-caption d-flex align-items-center">
+              <div class="container">
+                <div class="row align-items-center justify-content-center justify-content-lg-start">
+                  <div class="col-10 col-lg-7 text-center text-lg-start">
+                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">//Estoque - Loja Jaú //</h6>
+                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">PREÇO BAIXO, CREDIBILIDADE E QUALIDADE</h1>
+                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Entre em Contato <i class="fa fa-arrow-right ms-3"></i>
+                    </a>
+                  </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="img/carrosel-importacao.png" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center justify-content-lg-start">
-                                <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Importações //</h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">EQUIPE ESPECIALIZADA E PREPARADA</h1>
-                                    <h5 class="text-white animated mb-4 pb-3slideInDown">Para suprir as necessidades do seu carro e garantir a sua segurança</h5>
-
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="img/carrosel-estoque-sorocaba.png" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center justify-content-lg-start">
-                                <div class="col-10 col-lg-7 text-center text-lg-start">
-                                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Estoque -  Loja Sorocaba //</h6>
-                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">EQUIPE ESPECIALIZADA E PREPARADA</h1>
-                                    <h5 class="text-white animated mb-4 pb-3slideInDown">Para suprir as necessidades do seu carro e garantir a sua segurança</h5>
-
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+          </div>
+          <div class="carousel-item">
+            <img class="w-100" src="img/carrosel-estoque-sorocaba.png" alt="Image">
+            <div class="carousel-caption d-flex align-items-center">
+              <div class="container">
+                <div class="row align-items-center justify-content-center justify-content-lg-start">
+                  <div class="col-10 col-lg-7 text-center text-lg-start">
+                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Estoque - Loja Sorocaba //</h6>
+                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">EQUIPE ESPECIALIZADA E PREPARADA</h1>
+                    <h5 class="text-white animated mb-4 pb-3slideInDown">Para suprir as necessidades do seu carro e garantir a sua segurança</h5>
+                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista <i class="fa fa-arrow-right ms-3"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="w-100" src="img/carrosel-frota.png" alt="Image">
+            <div class="carousel-caption d-flex align-items-center">
+              <div class="container">
+                <div class="row align-items-center justify-content-center justify-content-lg-start">
+                  <div class="col-10 col-lg-7 text-center text-lg-start">
+                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Frota //</h6>
+                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Frota Própria</h1>
+                    <h5 class="text-white animated mb-4 pb-3slideInDown">Logística que permite entrega rápida e segura</h5>
+                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista <i class="fa fa-arrow-right ms-3"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="w-100" src="img/carrosel-importacao.png" alt="Image">
+            <div class="carousel-caption d-flex align-items-center">
+              <div class="container">
+                <div class="row align-items-center justify-content-center justify-content-lg-start">
+                  <div class="col-10 col-lg-7 text-center text-lg-start">
+                    <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Importações //</h6>
+                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">EQUIPE ESPECIALIZADA E PREPARADA</h1>
+                    <h5 class="text-white animated mb-4 pb-3slideInDown">Para suprir as necessidades do seu carro e garantir a sua segurança</h5>
+                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista <i class="fa fa-arrow-right ms-3"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    </div>
     </div>
     <!-- Carousel End -->
-
-    <div class="container-xxl mb-5 py-3 px-5" style="text-align: center; height: 100vh;">
-        <h1 class="justify-content-center animated mb-4 pb-3 slideInDown">A nossa  <strong>experiência</strong>  eleva sua <strong>performance</strong> .</h1>
-        <img class="justify-content-center mb-4 pb-3 img-fluid" src="img/logo.png" alt="">
-        <p class="justify-content-center  animated  slideInDown">A Shopping Car Importadora e Distribuidora é a sua <strong>melhor escolha  quando o assunto é pneus importados</strong>.<br/> Temos um dos maiores estoques do País, e levamos até você as mais renomadas marcas importadas, com o <strong>atendimento personalizado</strong> de nosso time de consultores.
-        </p>
-
-        <a href="" class="btn btn-primary py-3 px-5 mt-5">Contate um Especialista<i class="fa fa-arrow-right ms-3"></i></a>
+    <div class="container-xxl mb-5 py-3 px-5" style="text-align: center;">
+      <h1 class="justify-content-center animated mb-4 pb-3 slideInDown">A nossa <strong>experiência</strong> eleva sua <strong>performance</strong> . </h1>
+      <img class="justify-content-center mb-4 pb-3 img-fluid" src="img/logo.png" alt="">
+      <p class="justify-content-center  animated  slideInDown">A Shopping Car Importadora e Distribuidora é a sua <strong>melhor escolha quando o assunto é pneus importados</strong>. <br /> Temos um dos maiores estoques do País, e levamos até você as mais renomadas marcas importadas, com o <strong>atendimento personalizado</strong> de nosso time de consultores. </p>
+      <a href="" class="btn btn-primary py-3 px-5 mt-5">Contate um Especialista <i class="fa fa-arrow-right ms-3"></i>
+      </a>
     </div>
-    
-
-
     <!-- About Start -->
     <div id="sobre"></div>
     <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-12">
-                    <h6 class="text-primary text-uppercase">// Sobre Nós //</h6>
-                    <h1 class="mb-4"><span class="text-primary">Quem somos</span></h1>
-                    <p class="mb-4">Nascemos há 21 anos, com duas lojas de autocenter.<br/> 
-                        Crescemos exponencialmente no varejo e, com mais de 10 anos de experiência no atacado, oferecemos um portfólio completo e diversificado de marcas importadas de alta qualidade, atendendo a todas as regulamentações e órgãos do setor.<br/>
-                        Nossa equipe altamente especializada de consultores comerciais garante excelência no atendimento ao cliente e compromisso com a segurança dos produtos.
-
-                    </p>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-xxl py-5">
-        <div class="container">
-            
-            <div class="row g-5">
-                <div class="col-lg-6 ">
-                  <div class=" text-center position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
-                    <h3><strong>Loja Sorocaba</strong></h3>
-                        <img class=" img-fluid w-100 h-100" src="img/Fachada-Sorocaba-novo.png" style="object-fit: cover;" alt="">
-                      
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class=" text-center position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
-                        <h3><strong>Loja Jaú</strong></h3>
-                        <img class=" img-fluid w-100 h-100" src="img/fachada-jau-novo.png" style="object-fit: cover;" alt="">
-                      
-                    </div>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-     <div id="servicos"></div>
-     <div class="container-xxl service py-5">
-         <div class="container">
-             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                 <h6 class="text-primary text-uppercase">// Nossos Produtos //</h6>
-                 <h1 class="mb-5">Explore nossos Produtos</h1>
-             </div>
-             <div class="container">
-                <!-- Card deck -->
-                <div class="card-deck row">
-                  <div class="col-xs-12 col-sm-6 col-md-4 mb-4">
-                    <!-- Card -->
-                    <div class="card">
-                      <!--Card image-->
-                      <div class="view overlay">
-                        <img class="card-img-top img-fluid" src="https://www.veluplast.com.br/wp-content/uploads/2019/09/01-eagle-sport.png" alt="Card image cap">
-                        <a href="#!">
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-                      <!--Card content-->
-                      <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">Pneus passeio</h4>
-                        <!--Text-->
-                        <p class="card-text">Lorem ipsun </p>
-                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <a class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista</a>
-                      </div>
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- Card -->
-                    <div class="card mb-4">
-                      <!--Card image-->
-                      <div class="view overlay">
-                        <img class="card-img-top img-fluid" src="https://1stpneus.com.br/wp-content/uploads/2020/05/Agilis-1.jpg" alt="Card image cap">
-                        <a href="#!">
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-                      <!--Card content-->
-                      <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">Pneus carga leve</h4>
-                        <!--Text-->
-                        <p class="card-text">Lorem ipsun </p>
-                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <a class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista</a>
-                      </div>
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- Card -->
-                    <div class="card mb-4">
-                      <!--Card image-->
-                      <div class="view overlay">
-                        <img class="card-img-top img-fluid" src="https://static3.tcdn.com.br/img/img_prod/297138/180_pneu_245_75r16_radar_renegade_rt_120_116q_10_lonas_30299_1_26b3f093791d2f979e0b8d9d1c952047.jpg" alt="Card image cap">
-                        <a href="#!">
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-                      <!--Card content-->
-                      <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">Pneus de caminhonete</h4>
-                        <!--Text-->
-                        <p class="card-text">Lorem ipsun </p>
-                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <a class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista</a>
-                      </div>
-                    </div>
-                    <!-- Card -->
-                  </div>
-                </div>
-             </div>
-                
-         </div>
-     </div>
-         
-
-    <!-- Fact Start -->
-    <div class="container-fluid fact bg-dark my-5 py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <i class="fa fa-check fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">21</h2>
-                    <p class="text-white mb-0">Anos de Experiencia</p>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
-                    <i class="fa fa-users-cog fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">+100</h2>
-                    <p class="text-white mb-0">Técnicos Especializados</p>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
-                    <i class="fa fa-users fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">+5000</h2>
-                    <p class="text-white mb-0">Clientes Satisfeitos</p>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
-                    <i class="fa fa-car fa-2x text-white mb-3"></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">+2000</h2>
-                    <p class="text-white mb-0">Reparos</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fact End -->
-
-    <!-- Testimonial Start 
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="text-primary text-uppercase">// Testemunhos //</h6>
-                <h1 class="mb-5">Oque nosssos cliente dizem !</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item text-center">
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nome do Cliente</h5>
-                    <p>Profissão</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nome do Cliente</h5>
-                    <p>Profissão</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nome do Cliente</h5>
-                    <p>Profissão</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nome do Cliente</h5>
-                    <p>Profissão</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-     Testimonial End -->
-
- <!-- Contact Start -->
- <div id="contato"></div>
- <div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-primary text-uppercase">// Entre em Contato //</h6>
-            <h1 class="mb-5">Estamos esperando seu contato
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-12">
+            <h6 class="text-primary text-uppercase">// Sobre Nós //</h6>
+            <h1 class="mb-4">
+              <span class="text-primary">Quem somos</span>
             </h1>
-        </div>
-        <div class="row g-4">
-            <div class="col-12">
-                <div class="row gy-4">
-                    <div class="col-md-4">
-                        <div class="bg-light d-flex flex-column justify-content-center p-4">
-                            <h5 class="text-uppercase">// Reserva //</h5>
-                            <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>reserva@example.com</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light d-flex flex-column justify-content-center p-4">
-                            <h5 class="text-uppercase">// Geral //</h5>
-                            <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>geral@example.com</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light d-flex flex-column justify-content-center p-4">
-                            <h5 class="text-uppercase">// Técnica //</h5>
-                            <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>tec@example.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         
-            <div class="col-md-12 mb-3">
-                <div class="wow fadeInUp" data-wow-delay="0.2s">
-                    <form action="https://formsubmit.co/guilhermelara.developer@outlook.com" method="POST">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" name="Nome" placeholder="Nome" required >
-                                    <label for="name">Seu Nome</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" name="Email" id="email" placeholder="Email" required >
-                                    <label for="email">Email</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" name="Assunto" placeholder="Assunto" required >
-                                    <label for="subject">Assunto</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Deixe sua mensagem aqui" id="message" name="Mensagem" style="height: 100px"></textarea>
-                                    <label for="message">Mensagem</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Enviar</button>
-                                <input type="hidden" name="_next" value="https://devguilara.github.io/shopping-car/obrigado.html">
-                                <input type="text" name="_honey" style="display:none">
-                                <input type="hidden" name="_captcha" value="false">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
-                    <h3><strong>Aonde estamos</strong></h3>
-                  <img class="img-fluid w-100"  src="img/mapa_teste.webp" alt="">
-                </div>
+            <p class="mb-4">Nascemos há 21 anos, com duas lojas de autocenter. <br /> Crescemos exponencialmente no varejo e, com mais de 10 anos de experiência no atacado, oferecemos um portfólio completo e diversificado de marcas importadas de alta qualidade, atendendo a todas as regulamentações e órgãos do setor. <br /> Nossa equipe altamente especializada de consultores comerciais garante excelência no atendimento ao cliente e compromisso com a segurança dos produtos. </p>
           </div>
         </div>
-</div>
-</div>
-<!-- Contact End -->
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Matriz - Jaú/SP</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Av. José Eduardo do Amaral Carvalho, 410 </p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(14) 3418-9800</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(14) 3418-9700</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Filial 1 – Sorocaba/SP </h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Rua Antonio Carlos de Barros Bruni, 208 </p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(15) 3318-8319</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Institucional</h4>
-                    <a class="btn btn-link" href="">Trocas e devoluções</a>
-                    <a class="btn btn-link" href="">Manual de garantia</a>
-                    <a class="btn btn-link" href="">Política de Privacidade</a>
-                    <a class="btn btn-link" href="">Entregas</a>
-                    
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Empresa</h4>
-                    <a class="btn btn-link" href="">Quem Somos</a>
-                    <a class="btn btn-link" href="">Trabalhe Conosco</a>
-
-                </div>
-                
+      </div>
+    </div>
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6 ">
+            <div class=" text-center position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
+              <h3>
+                <strong>Loja Sorocaba</strong>
+              </h3>
+              <img class=" img-fluid w-100 h-100" src="img/Fachada-Sorocaba-novo.png" style="object-fit: cover;" alt="">
             </div>
+          </div>
+          <div class="col-lg-6">
+            <div class=" text-center position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
+              <h3>
+                <strong>Loja Jaú</strong>
+              </h3>
+              <img class=" img-fluid w-100 h-100" src="img/fachada-jau-novo.png" style="object-fit: cover;" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-12">
+            <h1 class="mb-4">
+              <span class="text-primary">Frota Própria</span>
+            </h1>
+            <p class="mb-4">Com uma frota própria, garantimos a precisão logística e o cumprimento de prazos, bem como o abastecimento constante em nossos estoques o que reflete diretamente na disponibilidade de produtos em sua loja e, consequentemente, mais potencial de venda diante do mercado. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="col-lg-12 ">
+          <div class="row g-5">
+            <h3>
+              <strong>Fotos da Frota</strong>
+            </h3>
+            <div class="col-lg-6 text-center position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
+              <img class=" img-fluid w-100 h-100" src="img/frota-teste-1.webp" style="object-fit: cover;" alt="">
+            </div>
+            <div class="col-lg-6 text-center position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
+              <img class=" img-fluid w-100 h-100" src="img/frota-teste-2.png" style="object-fit: cover;" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="servicos"></div>
+    <div class="container-xxl service py-5">
+      <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h6 class="text-primary text-uppercase">// Nossos Produtos //</h6>
+          <h1>Explore nossos Produtos</h1>
+          <h4 class="mb-5">Confira as nossas linhas completas de pneus para os mais diversos segmentos</h4>
         </div>
         <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Shopping Car</a> 2023  | All Right Reserved.</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Lei de Dados</a>
-                        </div>
-                    </div>
+          <!-- Card deck -->
+          <div class="card-deck row">
+            <div class="col-xs-12 col-sm-6 col-md-4 mb-4">
+              <!-- Card -->
+              <div class="card">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img class="card-img-top img-fluid" src="https://www.veluplast.com.br/wp-content/uploads/2019/09/01-eagle-sport.png" alt="Card image cap">
+                  <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
                 </div>
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h4 class="card-title">Pneus passeio</h4>
+                  <!--Text-->
+                  <p class="card-text">Lorem ipsun </p>
+                  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                  <a class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista</a>
+                </div>
+              </div>
+              <!-- Card -->
             </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <!-- Card -->
+              <div class="card mb-4">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img class="card-img-top img-fluid" src="https://1stpneus.com.br/wp-content/uploads/2020/05/Agilis-1.jpg" alt="Card image cap">
+                  <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h4 class="card-title">Pneus carga leve</h4>
+                  <!--Text-->
+                  <p class="card-text">Lorem ipsun </p>
+                  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                  <a class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista</a>
+                </div>
+              </div>
+              <!-- Card -->
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <!-- Card -->
+              <div class="card mb-4">
+                <!--Card image-->
+                <div class="view overlay">
+                  <img class="card-img-top img-fluid" src="https://static3.tcdn.com.br/img/img_prod/297138/180_pneu_245_75r16_radar_renegade_rt_120_116q_10_lonas_30299_1_26b3f093791d2f979e0b8d9d1c952047.jpg" alt="Card image cap">
+                  <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--Card content-->
+                <div class="card-body">
+                  <!--Title-->
+                  <h4 class="card-title">Pneus de caminhonete</h4>
+                  <!--Text-->
+                  <p class="card-text">Lorem ipsun </p>
+                  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                  <a class="btn btn-primary py-3 px-5 animated slideInDown">Contate um Especialista</a>
+                </div>
+              </div>
+              <!-- Card -->
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- Fact Start -->
+    <div class="container-fluid fact bg-dark my-5 py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
+            <i class="fa fa-check fa-2x text-white mb-3"></i>
+            <h2 class="text-white mb-2" data-toggle="counter-up">21</h2>
+            <p class="text-white mb-0">Anos de Experiencia</p>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
+            <i class="fa fa-users-cog fa-2x text-white mb-3"></i>
+            <h2 class="text-white mb-2" data-toggle="counter-up">+100</h2>
+            <p class="text-white mb-0">Técnicos Especializados</p>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
+            <i class="fa fa-users fa-2x text-white mb-3"></i>
+            <h2 class="text-white mb-2" data-toggle="counter-up">+5000</h2>
+            <p class="text-white mb-0">Clientes Satisfeitos</p>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
+            <i class="fa fa-car fa-2x text-white mb-3"></i>
+            <h2 class="text-white mb-2" data-toggle="counter-up">+2000</h2>
+            <p class="text-white mb-0">Reparos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fact End -->
+    <!-- Contact Start -->
+    <div id="contato"></div>
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-4 mb-5">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-primary text-uppercase">// Atendimento //</h6>
+                <h1 class="mb-5">Atendimento Personalizado </h1>
+              </div>
+              <div class="col-12">
+              <p> Aqui na <strong>Shopping Car</strong>, você encontra um time de consultores altamente capacitados para o esclarecimento de informações e a garantia da compra mais assertiva para sua empresa. </br> Basta nos chamar no <a href="#">whatsapp</a>, tirar todas as dúvidas e solicitar seu orçamento. </p>
+            </div>  
+
+            <div class="col-6">
+                <img class="img-fluid" src="img/mapa-1080x1080.png" alt="">
+            </div>
+
+            <div class="col-6">
+                <img class="img-fluid" src="img/atendimento.png" alt="">
+            </div>
+           
+          </div>
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h6 class="text-primary text-uppercase">// Entre em Contato //</h6>
+          <h1 class="mb-5">Estamos esperando seu contato </h1>
+        </div>
+       
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="row gy-4">
+              <div class="col-md-4">
+                <div class="bg-light d-flex flex-column justify-content-center p-4">
+                  <h5 class="text-uppercase">// Reserva //</h5>
+                  <p class="m-0">
+                    <i class="fa fa-envelope-open text-primary me-2"></i>reserva@example.com
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="bg-light d-flex flex-column justify-content-center p-4">
+                  <h5 class="text-uppercase">// Geral //</h5>
+                  <p class="m-0">
+                    <i class="fa fa-envelope-open text-primary me-2"></i>geral@example.com
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="bg-light d-flex flex-column justify-content-center p-4">
+                  <h5 class="text-uppercase">// Técnica //</h5>
+                  <p class="m-0">
+                    <i class="fa fa-envelope-open text-primary me-2"></i>tec@example.com
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 mb-3">
+            <div class="wow fadeInUp" data-wow-delay="0.2s">
+              <form action="https://formsubmit.co/guilhermelara.developer@outlook.com" method="POST">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="name" name="Nome" placeholder="Nome" required>
+                      <label for="name">Seu Nome</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="email" class="form-control" name="Email" id="email" placeholder="Email" required>
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="subject" name="Assunto" placeholder="Assunto" required>
+                      <label for="subject">Assunto</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <textarea class="form-control" placeholder="Deixe sua mensagem aqui" id="message" name="Mensagem" style="height: 100px"></textarea>
+                      <label for="message">Mensagem</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Enviar</button>
+                    <input type="hidden" name="_next" value="https://devguilara.github.io/shopping-car/obrigado.html">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_captcha" value="false">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
+        <!--
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
+              <h3>
+                <strong>Aonde estamos</strong>
+              </h3>
+              <img class="img-fluid" src="img/mapa-1080x1080.png" alt="">
+            </div>
+          </div>
+        </div>
+-->
+      </div>
+    </div>
+    <!-- Contact End -->
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Matriz - Jaú/SP</h4>
+            <p class="mb-2">
+              <i class="fa fa-map-marker-alt me-3"></i>Av. José Eduardo do Amaral Carvalho, 410
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-phone-alt me-3"></i>(14) 3418-9800
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-phone-alt me-3"></i>(14) 3418-9700
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-envelope me-3"></i>info@example.com
+            </p>
+            <div class="d-flex pt-2">
+              <a class="btn btn-outline-light btn-social" href="">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social" href="">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social" href="">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social" href="">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Filial 1 – Sorocaba/SP </h4>
+            <p class="mb-2">
+              <i class="fa fa-map-marker-alt me-3"></i>Rua Antonio Carlos de Barros Bruni, 208
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-phone-alt me-3"></i>(15) 3318-8319
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-envelope me-3"></i>info@example.com
+            </p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Institucional</h4>
+            <a class="btn btn-link" href="">Trocas e devoluções</a>
+            <a class="btn btn-link" href="">Manual de garantia</a>
+            <a class="btn btn-link" href="">Política de Privacidade</a>
+            <a class="btn btn-link" href="">Entregas</a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="text-light mb-4">Empresa</h4>
+            <a class="btn btn-link" href="">Quem Somos</a>
+            <a class="btn btn-link" href="">Trabalhe Conosco</a>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0"> &copy; <a class="border-bottom" href="#">Shopping Car</a> 2023 | All Right Reserved. </a>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <div class="footer-menu">
+                <a href="">Lei de Dados</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Footer End -->
-
-
+    <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+      <i class="fab fa-whatsapp my-float" aria-hidden="true"></i>
+    </a>
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-<!-- Meta Pixel Code -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+      <i class="bi bi-arrow-up"></i>
+    </a>
+    <!-- Meta Pixel Code -->
     <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '599677485477394');
-        fbq('track', 'PageView');
+      ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '599677485477394');
+      fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=599677485477394&ev=PageView&noscript=1"
-    /></noscript>
-  <!-- End Meta Pixel Code -->
-
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=599677485477394&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -551,11 +614,37 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
     <!-- Template Javascript -->
-    <script>var purecookieTitle="<p style='color:#c3283b; '><strong>Politica de Cookies.</strong></p>",purecookieDesc="Ao usar este site, você automaticamente aceita que usemos cookies. <br/> Este site utiliza cookies de análise de dados e de desempenho para ver o tráfego, a atividade e outros dados do site.",purecookieLink='<a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank">Lei Geral de Proteção de Dados Pessoais</a>',purecookieButton="Aceitar";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",7),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>
+    <script>
+      var purecookieTitle = " < p style = 'color:#c3283b; ' > < strong > Politica de Cookies. < /strong> < /p>",purecookieDesc="Ao usar este site, você automaticamente aceita que usemos cookies.  < br / > Este site utiliza cookies de análise de dados e de desempenho para ver o tráfego, a atividade e outros dados do site.",purecookieLink=' <a href = "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target = "_blank" > Lei Geral de Proteção de Dados Pessoais < /a>',purecookieButton="Aceitar";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02) < 0 ? o.style.display = "none" : requestAnimationFrame(e)
+      }()
+      }
 
+      function setCookie(e, o, i) {
+        var t = "";
+        if (i) {
+          var n = new Date;
+          n.setTime(n.getTime() + 24 * i * 60 * 60 * 1e3), t = "; expires=" + n.toUTCString()
+        }
+        document.cookie = e + "=" + (o || "") + t + "; path=/"
+      }
+
+      function getCookie(e) {
+        for (var o = e + "=", i = document.cookie.split(";"), t = 0; t < i.length; t++) {
+          for (var n = i[t];
+            " " == n.charAt(0);) n = n.substring(1, n.length);
+          if (0 == n.indexOf(o)) return n.substring(o.length, n.length)
+        }
+        return null
+      }
+
+      function eraseCookie(e) {
+        document.cookie = e + "=; Max-Age=-99999999;"
+      }
+
+      function cookieConsent() {
+        getCookie("purecookieDismiss") || (document.body.innerHTML += ' < div class = "cookieConsentContainer" id = "cookieConsentContainer" > < div class = "cookieTitle" > < a > '+purecookieTitle+' < /a> < /div> < div class = "cookieDesc" > < p > '+purecookieDesc+" "+purecookieLink+' < /p> < /div> < div class = "cookieButton" > < a onClick = "purecookieDismiss();" > '+purecookieButton+"</a> < /div> < /div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",7),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};
+    </script>
     <script src="js/main.js"></script>
-</body>
-
+  </body>
 </html>

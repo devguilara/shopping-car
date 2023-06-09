@@ -9,7 +9,7 @@ strong {
     color: #c3283b !important;
 }
 p {
-    font-size: 18px !important;
+    font-size: 20px !important;
 }
 .fw-medium {
     font-weight: 600 !important;
@@ -404,4 +404,23 @@ p {
     p {
         font-size: 14px !important;
     }
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:120px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
 }
