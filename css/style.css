@@ -393,7 +393,9 @@ p {
     width: 100%;
     object-fit: cover;
 }
-
+.btn-style {
+    border-radius: 35px !important; 
+}
 @media (max-width: 768px){
     .card-img-top {
         width: 100%;
