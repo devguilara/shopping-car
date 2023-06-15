@@ -396,6 +396,9 @@ p {
 .btn-style {
     border-radius: 35px !important; 
 }
+.form-control{
+    border-radius: 15px;
+}
 @media (max-width: 768px){
     .card-img-top {
         width: 100%;
