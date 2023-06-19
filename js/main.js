@@ -1,4 +1,8 @@
+
+
 (function ($) {
+
+    
     "use strict";
 
     // Spinner
@@ -24,7 +28,7 @@
             $('.sticky-top').css('top', '-100px');
         }
     });
-    
+   
     
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
@@ -106,5 +110,13 @@
         }
     });
     
-})(jQuery);
+    $(function(){ 
+        var navMain = $(".navbar-collapse");
+   
+        navMain.on("click", "a", null, function () {
+            navMain.collapse('hide');
+        });
+    });
 
+  
+})(jQuery);
