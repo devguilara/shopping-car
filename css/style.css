@@ -203,7 +203,7 @@ p {
 
 /*** Facts ***/
 .fact {
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../img/carousel-bg-1.jpg);
+    background: url(../img/bg-1.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -436,4 +436,16 @@ p {
 
 .my-float{
 	margin-top:16px;
+}
+
+.container-principal{
+    background-image: url(../img/bg-principal.png);
+    
+}
+
+.container-principal strong{
+        color:black;
+}
+.carousel-item img{
+    opacity: 55%;
 }
