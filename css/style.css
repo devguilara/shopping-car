@@ -419,6 +419,7 @@ p {
     }
 }
 
+
 .float{
 	position:fixed;
 	width:60px;
@@ -439,9 +440,16 @@ p {
 }
 
 .container-principal{
-    background-image: url(../img/bg-principal-novo.png);
-    width: auto;
+    background-image: url(../img/banner-bg.png);
     
+    
+}
+@media only screen and (min-width: 1900px){
+    .container-principal{
+        background-image: url(../img/bg-principal-novo.png);
+        
+        
+    }
 }
 
 .container-principal strong{
