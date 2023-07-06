@@ -440,6 +440,7 @@ p {
 
 .container-principal{
     background-image: url(../img/bg-principal.png);
+    background-repeat: no-repeat;
     
 }
 
